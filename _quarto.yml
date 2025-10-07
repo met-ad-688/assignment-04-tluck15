@@ -1,0 +1,12 @@
+project:
+  type: website
+
+navbar:
+  - text: Home
+    href: index.qmd
+  - text: About
+    href: about.qmd
+
+format:
+  html: default
+  docx: default

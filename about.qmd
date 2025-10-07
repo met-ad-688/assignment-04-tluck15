@@ -1,0 +1,8 @@
+---
+title: "about"
+author: "Taylor Luckenbill"
+format:
+  html: default
+  docx: default
+---
+# project details
