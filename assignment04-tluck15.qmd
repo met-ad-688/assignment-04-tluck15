@@ -30,6 +30,8 @@ import plotly.express as px
 import plotly.io as pio
 import numpy as np
 ```
+# Data Preparartion
+## Load data and review
 ```{python}
 np.random.seed(42)
 
@@ -44,11 +46,46 @@ df = spark.read.option("header", "true").option("inferSchema", "true").option("m
 # Show Schema and Sample Data
 print("---This is Diagnostic check, No need to print it in the final doc---")
 
-# df.printSchema() # comment this line when rendering the submission
+#df.printSchema() # comment this line when rendering the submission
 df.show(5)
+```
+### Pick salary as target variable, state name, posted, certifications name, remote type name, employment type name, city name, education levels name swill be indepent variables for the analysis.
+
+```{python}
+df = df.select("SALARY","STATE_NAME","POSTED", "EDUCATION_LEVELS_NAME", "MIN_YEARS_EXPERIENCE", "DURATION")
+df.show()
+df = df.na.fill({"MIN_YEARS_EXPERIENCE": 0, "DURATION":0})
+df.show()
 ```
 
 ```{python}
+df_pd = df.toPandas()
+#df_pd.head(5)
+(df_pd.isna().sum() / len(df_pd)) * 100
 
+```
+### Visualize the nas to understand the magnitude. Over 50% of salary is na, remove those values.
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
 
+```{python}
+import seaborn as sns
+
+sns.heatmap(df_pd.isna(), cbar=False)
+plt.title("Missing Data Heatmap")
+plt.show()
+```
+```{python}
+df = df.na.drop(subset=["SALARY"])
+df_pd = df.toPandas()
+
+sns.heatmap(df_pd.isna(), cbar=False)
+plt.title("Missing Data Heatmap")
+plt.show()
+```
+
+```{python}
+(df_pd.isna().sum() / len(df_pd)) * 100
 ```
