@@ -128,3 +128,26 @@ pipeline_model = pipeline.fit(train_df)
 train_ready = pipeline_model.transform(train_df)
 test_ready = pipeline_model.transform(test_df)
 ```
+
+```{python}
+from pyspark.sql.functions import col, pow
+
+df_poly = df.withColumn("MIN_YEARS_EXPERIENCE_SQ", pow(col("MIN_YEARS_EXPERIENCE"), 2))
+
+```
+
+```{python}
+from pyspark.ml.feature import VectorAssembler
+
+assembler_poly = VectorAssembler(
+    inputCols=["MIN_YEARS_EXPERIENCE", "MIN_YEARS_EXPERIENCE_SQ"],
+    outputCol="features_poly"
+)
+
+df_poly = assembler_poly.transform(df_poly)
+```
+
+```{python}
+df_poly.printSchema()
+
+```
