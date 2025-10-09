@@ -149,5 +149,10 @@ df_poly = assembler_poly.transform(df_poly)
 
 ```{python}
 df_poly.printSchema()
+```
+```{python}
+df_poly.show()
+```
+```{python}
 
 ```
