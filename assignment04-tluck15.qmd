@@ -154,6 +154,6 @@ test_ready = pipeline_model.transform(test_df)
 ```
 
 ```{python}
-
-
+train_ready = train_ready["SALARY","features"]
+train_ready.show()
 ```
