@@ -71,8 +71,6 @@ import matplotlib.pyplot as plt
 ```
 
 ```{python}
-import seaborn as sns
-
 sns.heatmap(df_pd.isna(), cbar=False)
 plt.title("Missing Data Heatmap")
 plt.show()
@@ -88,4 +86,45 @@ plt.show()
 
 ```{python}
 (df_pd.isna().sum() / len(df_pd)) * 100
+```
+
+```{python}
+from pyspark.ml import Pipeline
+from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+```
+
+```{python}
+# Suppose you have these columns
+categorical_cols = ["STATE_NAME", "EDUCATION_LEVELS_NAME","POSTED"]
+numeric_cols = ["SALARY", "MIN_YEARS_EXPERIENCE", "DURATION"]
+```
+
+```{python}
+# Step 1: Index and encode categorical variables
+indexers = [StringIndexer(inputCol=col, outputCol=f"{col}_indexed") for col in categorical_cols]
+encoders = [OneHotEncoder(inputCols=[f"{col}_indexed"], outputCols=[f"{col}_encoded"]) for col in categorical_cols]
+```
+
+```{python}
+# Step 2: Assemble all features into one vector
+assembler_inputs = [f"{col}_encoded" for col in categorical_cols] + numeric_cols
+assembler = VectorAssembler(inputCols=assembler_inputs, outputCol="features")
+```
+
+
+```{python}
+# Step 3: Define the pipeline
+pipeline = Pipeline(stages=indexers + encoders + [assembler])
+```
+
+```{python}
+# Step 4: Split data
+train_df, test_df = df.randomSplit([0.8, 0.2], seed=42)
+```
+
+```{python}
+# Step 5: Fit and transform
+pipeline_model = pipeline.fit(train_df)
+train_ready = pipeline_model.transform(train_df)
+test_ready = pipeline_model.transform(test_df)
 ```
