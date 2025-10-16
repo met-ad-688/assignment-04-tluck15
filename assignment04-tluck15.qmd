@@ -208,3 +208,72 @@ coef_df = pd.DataFrame({
 
 coef_df.head()
 ```
+
+# Polynomial Regression
+
+```{python}
+from pyspark.ml.feature import PolynomialExpansion, VectorAssembler
+
+```
+
+```{python}
+assembler_poly = VectorAssembler(
+    inputCols=["MIN_YEARS_EXPERIENCE", "DURATION"],
+    outputCol="numeric_features"
+)
+
+#expand to polynomial
+poly_expansion = PolynomialExpansion(
+    degree=2, 
+    inputCol="numeric_features", 
+    outputCol="poly_features"
+)
+```
+
+```{python}
+assembler_final = VectorAssembler(
+    inputCols=["poly_features"] + [f"{col}_encoded" for col in categorical_cols],
+    outputCol="features"
+)
+
+poly_pipeline = Pipeline(stages=indexers + encoders + [assembler_poly, poly_expansion, assembler_final])
+
+```
+
+
+```{python}
+poly_model = poly_pipeline.fit(train_df)
+train_poly = poly_model.transform(train_df)
+test_poly = poly_model.transform(test_df)
+
+lrm_poly = LinearRegression(
+    featuresCol="features",
+    labelCol="SALARY",
+    predictionCol="prediction",
+    maxIter=100,
+    regParam=0.0,
+    elasticNetParam=0.0
+)
+
+model_poly = lrm_poly.fit(train_poly)
+summary_poly = model_poly.summary
+
+print("R2:", summary_poly.r2)
+print("RMSE:", summary_poly.rootMeanSquaredError)
+```
+
+```{python}
+se = summary_poly.coefficientStandardErrors[1:]
+tvals = summary_poly.tValues[1:]
+pvals = summary_poly.pValues[1:]
+
+coef_df = pd.DataFrame({
+    "Feature": [f"feature_{i+1}" for i in range(len(model_poly.coefficients))],
+    "Coefficient": model_poly.coefficients.toArray(),
+    "StdError": se,
+    "tValue": tvals,
+    "pValue": pvals
+})
+
+coef_df.head()
+```
