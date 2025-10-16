@@ -52,7 +52,7 @@ df.show(5)
 ### Pick salary as target variable, state name, posted, certifications name, remote type name, employment type name, city name, education levels name swill be indepent variables for the analysis.
 
 ```{python}
-df = df.select("SALARY","STATE_NAME","POSTED", "EDUCATION_LEVELS_NAME", "MIN_YEARS_EXPERIENCE", "DURATION")
+df = df.select("SALARY","STATE_NAME","NAICS2_NAME", "EDUCATION_LEVELS_NAME", "MIN_YEARS_EXPERIENCE", "DURATION")
 df.show()
 df = df.na.fill({"MIN_YEARS_EXPERIENCE": 0, "DURATION":0})
 df.show()
@@ -95,8 +95,8 @@ from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
 
 ```{python}
 # Suppose you have these columns
-categorical_cols = ["STATE_NAME", "EDUCATION_LEVELS_NAME","POSTED"]
-numeric_cols = ["SALARY", "MIN_YEARS_EXPERIENCE", "DURATION"]
+categorical_cols = ["STATE_NAME", "EDUCATION_LEVELS_NAME","NAICS2_NAME"]
+numeric_cols = ["MIN_YEARS_EXPERIENCE", "DURATION"]
 ```
 
 ```{python}
@@ -192,13 +192,19 @@ summary = modelLR.summary
 ```
 
 ```{python}
-print(modelLR.intercept)
-print(summary.r2)
-print(summary.rootMeanSquaredError)
-print(summary.meanAbsoluteError)
+# Drop the intercept-related first element from the summary stats
+se = summary.coefficientStandardErrors[1:]
+tvals = summary.tValues[1:]
+pvals = summary.pValues[1:]
 
-for i, coef in enumerate(modelLR.coefficients):
-  print(f"Coefficient {i+1}: {coef:.6f}")
+# Now build the DataFrame — they should all match
+coef_df = pd.DataFrame({
+    "Feature": [f"feature_{i+1}" for i in range(len(modelLR.coefficients))],
+    "Coefficient": modelLR.coefficients.toArray(),
+    "StdError": se,
+    "tValue": tvals,
+    "pValue": pvals
+})
 
-print(modelLR.coefficients)
+coef_df.head()
 ```
