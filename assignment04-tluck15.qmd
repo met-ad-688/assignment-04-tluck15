@@ -277,3 +277,76 @@ coef_df = pd.DataFrame({
 
 coef_df.head()
 ```
+
+# Random Forest
+```{python}
+from pyspark.ml.regression import RandomForestRegressor
+
+rf = RandomForestRegressor(
+    labelCol="SALARY",
+    featuresCol="features",
+    numTrees=100,           # number of trees (more trees = more stability)
+    maxDepth=10,            # depth of each tree
+    maxBins=32,             # controls how continuous features are binned
+    seed=42
+)
+```
+
+```{python}
+rf_pipeline = Pipeline(stages=indexers + encoders + [assembler, rf])
+
+```
+
+```{python}
+rf_model = rf_pipeline.fit(train_df)
+predictions = rf_model.transform(test_df)
+
+```
+
+```{python}
+evaluator = RegressionEvaluator(
+    labelCol="SALARY",
+    predictionCol="prediction",
+    metricName="r2"
+)
+
+r2 = evaluator.evaluate(predictions)
+rmse = RegressionEvaluator(
+    labelCol="SALARY", predictionCol="prediction", metricName="rmse"
+).evaluate(predictions)
+
+mae = RegressionEvaluator(
+    labelCol="SALARY", predictionCol="prediction", metricName="mae"
+).evaluate(predictions)
+
+print(f"R²: {r2:.3f}")
+print(f"RMSE: {rmse:.3f}")
+print(f"MAE: {mae:.3f}")
+
+
+```
+
+
+```{python}
+rf_stage = rf_model.stages[-1] 
+
+importances = rf_stage.featureImportances.toArray()
+
+feat_imp = pd.DataFrame({
+    "Feature": [f"feature_{i+1}" for i in range(len(importances))],
+    "Importance": importances
+}).sort_values(by="Importance", ascending=False)
+
+feat_imp.head(10)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(10,6))
+sns.barplot(data=feat_imp.head(15), y="Feature", x="Importance", palette="viridis")
+plt.title("Top 15 Random Forest Feature Importances")
+plt.tight_layout()
+plt.show()
+```
