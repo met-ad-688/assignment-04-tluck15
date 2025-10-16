@@ -156,4 +156,49 @@ test_ready = pipeline_model.transform(test_df)
 ```{python}
 train_ready = train_ready["SALARY","features"]
 train_ready.show()
+
+test_ready = test_ready["SALARY","features"]
+
+#train_ready.summary()
+```
+
+
+```{python}
+from pyspark.ml.regression import LinearRegression
+from pyspark.ml.evaluation import RegressionEvaluator 
+```
+
+```{python}
+train_ready.printSchema()
+```
+
+```{python}
+lrm = LinearRegression(
+  featuresCol="features",
+  labelCol="SALARY",
+  predictionCol="prediction",
+  maxIter=100,
+  regParam=0.0,
+  elasticNetParam=0.0,
+  fitIntercept=True,
+  standardization=True,
+)
+
+modelLR = lrm.fit(train_ready)
+```
+
+```{python}
+summary = modelLR.summary
+```
+
+```{python}
+print(modelLR.intercept)
+print(summary.r2)
+print(summary.rootMeanSquaredError)
+print(summary.meanAbsoluteError)
+
+for i, coef in enumerate(modelLR.coefficients):
+  print(f"Coefficient {i+1}: {coef:.6f}")
+
+print(modelLR.coefficients)
 ```
