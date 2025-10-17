@@ -118,26 +118,28 @@ indexers = [StringIndexer(inputCol=col, outputCol=f"{col}_indexed") for col in c
 encoders = [OneHotEncoder(inputCols=[f"{col}_indexed"], outputCols=[f"{col}_encoded"]) for col in categorical_cols]
 ```
 
-
+### Next compile the one hot encoded columns with the numeric columns in a vector to be used in feature modeling.
 ```{python}
-# Step 2: Assemble all features into one vector
+
 assembler_inputs = [f"{col}_encoded" for col in categorical_cols] + numeric_cols
 assembler = VectorAssembler(inputCols=assembler_inputs, outputCol="features")
 ```
 
 
+### Store these data preparation steps as a pipeline for further use
 ```{python}
-# Step 3: Define the pipeline
+
 pipeline = Pipeline(stages=indexers + encoders + [assembler])
 ```
 
+### For polynomial square min years experience
 ```{python}
 from pyspark.sql.functions import col, pow
 
 df_poly = df.withColumn("MIN_YEARS_EXPERIENCE_SQ", pow(col("MIN_YEARS_EXPERIENCE"), 2))
 
 ```
-
+### Assemble vector using min years and min years experience for polynomial features.
 ```{python}
 from pyspark.ml.feature import VectorAssembler
 
@@ -153,27 +155,26 @@ df_poly = assembler_poly.transform(df_poly)
 df_poly.printSchema()
 ```
 ```{python}
-df_poly.show()
+#df_poly.show()
 ```
+### Now split the data for training and testing in a 70/30% split. 
 ```{python}
-# Step 4: Split data
 train_df, test_df = df.randomSplit([0.7, 0.3], seed=42)
 ```
 
+### Use the previusly created pipeline the prepare the training and test data for use. 
 ```{python}
-# Step 5: Fit and transform
 pipeline_model = pipeline.fit(train_df)
 train_ready = pipeline_model.transform(train_df)
 test_ready = pipeline_model.transform(test_df)
 ```
 
+### Parse target variable and features vector for modeling.
 ```{python}
 train_ready = train_ready["SALARY","features"]
-train_ready.show()
+#train_ready.show()
 
 test_ready = test_ready["SALARY","features"]
-
-#train_ready.summary()
 ```
 
 
