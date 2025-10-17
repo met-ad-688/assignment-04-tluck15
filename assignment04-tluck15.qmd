@@ -396,6 +396,8 @@ plt.show()
 ```
 
 # Random Forest
+## Setup model
+### 100 trees, 10 levels of depth to each branch, max of 18 bins for feature categorization.
 ```{python}
 from pyspark.ml.regression import RandomForestRegressor
 
@@ -404,16 +406,18 @@ rf = RandomForestRegressor(
     featuresCol="features",
     numTrees=100,           # number of trees (more trees = more stability)
     maxDepth=10,            # depth of each tree
-    maxBins=32,             # controls how continuous features are binned
+    maxBins=18,             # controls how continuous features are binned
     seed=42
 )
 ```
 
+### Like the other models, assemble the data and prepare it using the pipeline setup earlier in the project.
 ```{python}
 rf_pipeline = Pipeline(stages=indexers + encoders + [assembler, rf])
 
 ```
 
+### Train and then make predictions on test data. [stopping point]
 ```{python}
 rf_model = rf_pipeline.fit(train_df)
 predictions = rf_model.transform(test_df)
