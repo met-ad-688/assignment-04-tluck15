@@ -251,7 +251,7 @@ print(desc_stats)
 ```
 ### Issue existed with spillover so control with se, tvals, pvals. For features, loop through for only the number of coefficients so to avoid spillover.
 
-### The linear regression model performed okay on the test data. Accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. THere were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). 
+### The linear regression model performed okay on the test data. Accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. THere were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). R squared states ~35% of variation in salary can be explained by the features in the data. On average predictions are off by ~$35,834.
 ```{python}
 se = testsummary.coefficientStandardErrors[1:]
 tvals = testsummary.tValues[1:]
@@ -264,6 +264,9 @@ testcoef_df = pd.DataFrame({
     "tValue": tvals,
     "pValue": pvals
 })
+
+print("R2:", testsummary.r2)
+print("RMSE:", testsummary.rootMeanSquaredError)
 
 #coef_df.head(100)
 # Scale coefficients to t-values range
@@ -292,10 +295,6 @@ plt.tight_layout()
 plt.show()
 
 ```
-
-
-
-
 
 
 
@@ -341,7 +340,7 @@ lrm_poly = LinearRegression(
     labelCol="SALARY",
     predictionCol="prediction",
     maxIter=100,
-    regParam=0.0,
+    regParam=0.1,
     elasticNetParam=0.0
 )
 
