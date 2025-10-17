@@ -179,10 +179,12 @@ test_ready = test_ready["SALARY","features"]
 
 
 ```{python}
+#| echo: false
 from pyspark.ml.regression import LinearRegression
 from pyspark.ml.evaluation import RegressionEvaluator 
 ```
 
+### Confirm schema for linear regression model.
 ```{python}
 train_ready.printSchema()
 ```
