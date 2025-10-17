@@ -304,7 +304,7 @@ plt.show()
 from pyspark.ml.feature import PolynomialExpansion, VectorAssembler
 
 ```
-
+## Combine numeric and non numeric columns.
 ```{python}
 assembler_poly = VectorAssembler(
     inputCols=["MIN_YEARS_EXPERIENCE", "DURATION"],
@@ -319,6 +319,7 @@ poly_expansion = PolynomialExpansion(
 )
 ```
 
+### Use the pipeline created earlier to prepare the polynomial features.
 ```{python}
 assembler_final = VectorAssembler(
     inputCols=["poly_features"] + [f"{col}_encoded" for col in categorical_cols],
@@ -329,7 +330,7 @@ poly_pipeline = Pipeline(stages=indexers + encoders + [assembler_poly, poly_expa
 
 ```
 
-
+### Fit model and apply same parameters as the linear regression. ~36.8% of variation in salary can be explained by the feature variables. And on average the prediction was off by $36,025. 
 ```{python}
 poly_model = poly_pipeline.fit(train_df)
 train_poly = poly_model.transform(train_df)
@@ -365,6 +366,33 @@ coef_df = pd.DataFrame({
 })
 
 coef_df.head()
+```
+### Overal the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity  and varying results. 
+```{python}
+
+# Scale coefficients with log
+coef_df["Coefficient_log"] = np.log(np.abs(coef_df["Coefficient"]) + 1e-8) 
+
+plt.figure(figsize=(12,6))
+
+# x-axis = features
+x = coef_df["Feature"]
+
+# plot each statistic as a line
+plt.plot(x, coef_df["Coefficient_log"], marker='o', label="Coefficient Scaled")
+plt.plot(x, coef_df["tValue"], marker='s', label="t-value")
+plt.plot(x, coef_df["pValue"], marker='^', label="p-value")
+
+plt.axhline(y=2, color='red', linestyle=':', label='t-value threshold')
+
+plt.xticks(rotation=45, ha='right')  # rotate feature names for readability
+plt.xlabel("Features")
+plt.ylabel("Values")
+plt.title("Model Summary: Coefficients, t-values, p-values")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
 ```
 
 # Random Forest
