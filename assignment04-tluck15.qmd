@@ -48,7 +48,7 @@ df = spark.read.option("header", "true").option("inferSchema", "true").option("m
 #print("---This is Diagnostic check, No need to print it in the final doc---")
 
 #df.printSchema() # comment this line when rendering the submission
-df.show(5)
+#df.show(5)
 ```
 ### Pick salary as target variable, state name, NAICS2_NAME name, remote type name, employment type name, city name, education levels name, min years experience , duration will be indepent variables for the analysis. 
 
@@ -367,7 +367,7 @@ coef_df = pd.DataFrame({
 
 coef_df.head()
 ```
-### Overall the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity  and varying results. 
+### Overall the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity and varying results. 
 ```{python}
 
 # Scale coefficients with log
@@ -404,9 +404,9 @@ from pyspark.ml.regression import RandomForestRegressor
 rf = RandomForestRegressor(
     labelCol="SALARY",
     featuresCol="features",
-    numTrees=100,           # number of trees (more trees = more stability)
-    maxDepth=10,            # depth of each tree
-    maxBins=18,             # controls how continuous features are binned
+    numTrees=100,         
+    maxDepth=10,         
+    maxBins=18,        
     seed=42
 )
 ```
@@ -417,13 +417,14 @@ rf_pipeline = Pipeline(stages=indexers + encoders + [assembler, rf])
 
 ```
 
-### Train and then make predictions on test data. [stopping point]
+### Train and then make predictions on test data.
 ```{python}
 rf_model = rf_pipeline.fit(train_df)
 predictions = rf_model.transform(test_df)
 
 ```
 
+### Initial results suggest the random forest performed reasonably well. The r squared suggests ~43% of variation in salary can be explained by the features in the forest. Error is comparable to the other models as on average the prediction of salary was $25,175 off. 
 ```{python}
 evaluator = RegressionEvaluator(
     labelCol="SALARY",
@@ -447,7 +448,7 @@ print(f"MAE: {mae:.3f}")
 
 ```
 
-
+### Feature 97 was by far the most important feature.
 ```{python}
 rf_stage = rf_model.stages[-1] 
 
@@ -473,3 +474,7 @@ plt.show()
 ```
 
 # Model Comparisons
+## Summary
+### Overall the linear regression model was the model that produced the most consistent results on the test data. Generally speaking across all features the T-stat was consistently high (coeff/error), the p[ value was consistently at a level of significance (<.05), and this was representative of all variables, meaning all of the variables seemed to contribute reasonably to the outcome in terms of the coefficient magnitude, the t-stat and the p-value. The random foorest performed better in r squared (percent variation in salary explained by the features) but the rest of the supporting data was inconsinstent, especially the expnential impact of feature 97 on the random forest. The polynomial model also had inconsistencies, which make it less consistenly effective than the linear regression.
+
+### In total the linear regression accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. There were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). R squared states ~35% of variation in salary can be explained by the features in the data. On average predictions are off by ~$35,834.
