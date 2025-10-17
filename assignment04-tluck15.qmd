@@ -188,14 +188,16 @@ from pyspark.ml.evaluation import RegressionEvaluator
 ```{python}
 train_ready.printSchema()
 ```
-
+# Modeling
+## Build and fit model
+### Penalalize large coefficients and keep all features. Allow for intercept and standardize the data accross variables.
 ```{python}
 lrm = LinearRegression(
   featuresCol="features",
   labelCol="SALARY",
   predictionCol="prediction",
   maxIter=100,
-  regParam=0.0,
+  regParam=0.1,
   elasticNetParam=0.0,
   fitIntercept=True,
   standardization=True,
@@ -204,17 +206,18 @@ lrm = LinearRegression(
 modelLR = lrm.fit(train_ready)
 ```
 
+## Linear Regression Model Summary on Train and test data
 ```{python}
 summary = modelLR.summary
 ```
+### Issue existed with spillover so control with se, tvals, pvals. For features, loop through for only the number of coefficients so to avoid spillover.
 
+### Linear regression model performed well. All features had statistically significant p values, moderately large t values, reasonably equivalent coefficient magnitudes with respect to salary, which is reflected in the stndard error being significantly smaller than the respective coefficient.
 ```{python}
-# Drop the intercept-related first element from the summary stats
 se = summary.coefficientStandardErrors[1:]
 tvals = summary.tValues[1:]
 pvals = summary.pValues[1:]
 
-# Now build the DataFrame — they should all match
 coef_df = pd.DataFrame({
     "Feature": [f"feature_{i+1}" for i in range(len(modelLR.coefficients))],
     "Coefficient": modelLR.coefficients.toArray(),
@@ -223,8 +226,78 @@ coef_df = pd.DataFrame({
     "pValue": pvals
 })
 
-coef_df.head()
+coef_df.head(100)
 ```
+
+## Now validate and run the model using the test data
+```{python}
+testmodelLR = lrm.fit(test_ready)
+
+```
+
+```{python}
+testsummary = testmodelLR.summary
+
+t_values = summary.tValues
+p_values = summary.pValues
+
+stats_df = pd.DataFrame({
+    "t_value": t_values,
+    "p_value": p_values
+})
+
+desc_stats = stats_df.describe()
+print(desc_stats)
+```
+### Issue existed with spillover so control with se, tvals, pvals. For features, loop through for only the number of coefficients so to avoid spillover.
+
+### The linear regression model performed okay on the test data. Accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. THere were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). 
+```{python}
+se = testsummary.coefficientStandardErrors[1:]
+tvals = testsummary.tValues[1:]
+pvals = testsummary.pValues[1:]
+
+testcoef_df = pd.DataFrame({
+    "Feature": [f"feature_{i+1}" for i in range(len(testmodelLR.coefficients))],
+    "Coefficient": testmodelLR.coefficients.toArray(),
+    "StdError": se,
+    "tValue": tvals,
+    "pValue": pvals
+})
+
+#coef_df.head(100)
+# Scale coefficients to t-values range
+testcoef_df["Coefficient_log"] = np.log(np.abs(testcoef_df["Coefficient"]) + 1e-8) 
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12,6))
+
+# x-axis = features
+x = testcoef_df["Feature"]
+
+# plot each statistic as a line
+plt.plot(x, testcoef_df["Coefficient_log"], marker='o', label="Coefficient Scaled")
+plt.plot(x, testcoef_df["tValue"], marker='s', label="t-value")
+plt.plot(x, testcoef_df["pValue"], marker='^', label="p-value")
+
+plt.axhline(y=2, color='red', linestyle=':', label='t-value threshold')
+
+plt.xticks(rotation=45, ha='right')  # rotate feature names for readability
+plt.xlabel("Features")
+plt.ylabel("Values")
+plt.title("Model Summary: Coefficients, t-values, p-values")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+```
+
+
+
+
+
+
 
 # Polynomial Regression
 
