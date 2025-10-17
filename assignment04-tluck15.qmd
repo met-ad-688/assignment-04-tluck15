@@ -367,7 +367,7 @@ coef_df = pd.DataFrame({
 
 coef_df.head()
 ```
-### Overal the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity  and varying results. 
+### Overall the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity  and varying results. 
 ```{python}
 
 # Scale coefficients with log
