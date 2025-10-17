@@ -24,6 +24,7 @@ execute:
 ---
 
 ```{python}
+#| echo: false
 from pyspark.sql import SparkSession
 import pandas as pd
 import plotly.express as px
@@ -44,37 +45,44 @@ spark = SparkSession.builder.appName("LightcastData").getOrCreate()
 df = spark.read.option("header", "true").option("inferSchema", "true").option("multiLine","true").option("escape", "\"").csv("data/lightcast_job_postings.csv")
 
 # Show Schema and Sample Data
-print("---This is Diagnostic check, No need to print it in the final doc---")
+#print("---This is Diagnostic check, No need to print it in the final doc---")
 
 #df.printSchema() # comment this line when rendering the submission
 df.show(5)
 ```
-### Pick salary as target variable, state name, posted, certifications name, remote type name, employment type name, city name, education levels name swill be indepent variables for the analysis.
+### Pick salary as target variable, state name, NAICS2_NAME name, remote type name, employment type name, city name, education levels name, min years experience , duration will be indepent variables for the analysis. 
+
+### For min years experience and duration fill na with 0. 
 
 ```{python}
 df = df.select("SALARY","STATE_NAME","NAICS2_NAME", "EDUCATION_LEVELS_NAME", "MIN_YEARS_EXPERIENCE", "DURATION")
-df.show()
+#df.show()
 df = df.na.fill({"MIN_YEARS_EXPERIENCE": 0, "DURATION":0})
-df.show()
+#df.show()
 ```
 
+### Visualize the nas to understand the magnitude. Over 50% of salary is na, remove those values. 
 ```{python}
 df_pd = df.toPandas()
 #df_pd.head(5)
 (df_pd.isna().sum() / len(df_pd)) * 100
 
 ```
-### Visualize the nas to understand the magnitude. Over 50% of salary is na, remove those values.
+
 ```{python}
+#| echo: false
 import seaborn as sns
 import matplotlib.pyplot as plt
 ```
 
+### Using seaborn review a heat map of NA values. The independant variables are whole but salary is missing data.
 ```{python}
 sns.heatmap(df_pd.isna(), cbar=False)
 plt.title("Missing Data Heatmap")
 plt.show()
 ```
+
+### Drop all records where salary is NA.
 ```{python}
 df = df.na.drop(subset=["SALARY"])
 df_pd = df.toPandas()
@@ -83,15 +91,19 @@ sns.heatmap(df_pd.isna(), cbar=False)
 plt.title("Missing Data Heatmap")
 plt.show()
 ```
+### The data is cleaned and is ready for modeling.
 
 ```{python}
 (df_pd.isna().sum() / len(df_pd)) * 100
 ```
 
 ```{python}
+#| echo: false
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
 ```
+# Feature Engineering
+## First take the input variables and split into numeric and non numeric goups. State name, education levels, NAICS_NAME are all categoric variables. Min years experience and duration are numeric.
 
 ```{python}
 # Suppose you have these columns
@@ -99,11 +111,13 @@ categorical_cols = ["STATE_NAME", "EDUCATION_LEVELS_NAME","NAICS2_NAME"]
 numeric_cols = ["MIN_YEARS_EXPERIENCE", "DURATION"]
 ```
 
+### For the categorical columns, assign index values to each column and then one hot encode the columns as a vector.
 ```{python}
-# Step 1: Index and encode categorical variables
+
 indexers = [StringIndexer(inputCol=col, outputCol=f"{col}_indexed") for col in categorical_cols]
 encoders = [OneHotEncoder(inputCols=[f"{col}_indexed"], outputCols=[f"{col}_encoded"]) for col in categorical_cols]
 ```
+
 
 ```{python}
 # Step 2: Assemble all features into one vector
