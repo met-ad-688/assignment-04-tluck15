@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.8.24" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Norah Jones" />
+<meta name="dcterms.date" content="2024-11-21" />
+
+<title>Assignment 04</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous" data-relocate-top="true"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 04</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Norah Jones </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Boston University
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 21, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">October 17, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-preparartion" id="toc-data-preparartion"><span class="header-section-number">1</span> Data Preparartion</a>
+  <ul>
+  <li><a href="#load-data-and-review" id="toc-load-data-and-review"><span class="header-section-number">1.1</span> Load data and review</a></li>
+  </ul></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering"><span class="header-section-number">2</span> Feature Engineering</a>
+  <ul>
+  <li><a href="#first-take-the-input-variables-and-split-into-numeric-and-non-numeric-goups.-state-name-education-levels-naics_name-are-all-categoric-variables.-min-years-experience-and-duration-are-numeric." id="toc-first-take-the-input-variables-and-split-into-numeric-and-non-numeric-goups.-state-name-education-levels-naics_name-are-all-categoric-variables.-min-years-experience-and-duration-are-numeric."><span class="header-section-number">2.1</span> First take the input variables and split into numeric and non numeric goups. State name, education levels, NAICS_NAME are all categoric variables. Min years experience and duration are numeric.</a></li>
+  </ul></li>
+  <li><a href="#modeling" id="toc-modeling"><span class="header-section-number">3</span> Modeling</a>
+  <ul>
+  <li><a href="#build-and-fit-model" id="toc-build-and-fit-model"><span class="header-section-number">3.1</span> Build and fit model</a></li>
+  <li><a href="#linear-regression-model-summary-on-train-and-test-data" id="toc-linear-regression-model-summary-on-train-and-test-data"><span class="header-section-number">3.2</span> Linear Regression Model Summary on Train and test data</a></li>
+  <li><a href="#now-validate-and-run-the-model-using-the-test-data" id="toc-now-validate-and-run-the-model-using-the-test-data"><span class="header-section-number">3.3</span> Now validate and run the model using the test data</a></li>
+  </ul></li>
+  <li><a href="#polynomial-regression" id="toc-polynomial-regression"><span class="header-section-number">4</span> Polynomial Regression</a>
+  <ul>
+  <li><a href="#combine-numeric-and-non-numeric-columns." id="toc-combine-numeric-and-non-numeric-columns."><span class="header-section-number">4.1</span> Combine numeric and non numeric columns.</a></li>
+  </ul></li>
+  <li><a href="#random-forest" id="toc-random-forest"><span class="header-section-number">5</span> Random Forest</a>
+  <ul>
+  <li><a href="#setup-model" id="toc-setup-model"><span class="header-section-number">5.1</span> Setup model</a></li>
+  </ul></li>
+  <li><a href="#model-comparisons" id="toc-model-comparisons"><span class="header-section-number">6</span> Model Comparisons</a>
+  <ul>
+  <li><a href="#summary" id="toc-summary"><span class="header-section-number">6.1</span> Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+<section id="data-preparartion" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data Preparartion</h1>
+<section id="load-data-and-review" class="level2" data-number="1.1">
+<h2 data-number="1.1"><span class="header-section-number">1.1</span> Load data and review</h2>
+<div id="b1c761e3" class="cell" data-execution_count="2">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">&quot;notebook+notebook_connected+vscode&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Spark Session</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">&quot;LightcastData&quot;</span>).getOrCreate()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> spark.read.option(<span class="st">&quot;header&quot;</span>, <span class="st">&quot;true&quot;</span>).option(<span class="st">&quot;inferSchema&quot;</span>, <span class="st">&quot;true&quot;</span>).option(<span class="st">&quot;multiLine&quot;</span>,<span class="st">&quot;true&quot;</span>).option(<span class="st">&quot;escape&quot;</span>, <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>).csv(<span class="st">&quot;data/lightcast_job_postings.csv&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show Schema and Sample Data</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print(&quot;---This is Diagnostic check, No need to print it in the final doc---&quot;)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#df.printSchema() # comment this line when rendering the submission</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 94:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+<section id="pick-salary-as-target-variable-state-name-naics2_name-name-remote-type-name-employment-type-name-city-name-education-levels-name-min-years-experience-duration-will-be-indepent-variables-for-the-analysis." class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1"><span class="header-section-number">1.1.1</span> Pick salary as target variable, state name, NAICS2_NAME name, remote type name, employment type name, city name, education levels name, min years experience , duration will be indepent variables for the analysis.</h3>
+</section>
+<section id="for-min-years-experience-and-duration-fill-na-with-0." class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2"><span class="header-section-number">1.1.2</span> For min years experience and duration fill na with 0.</h3>
+<div id="f9284f21" class="cell" data-execution_count="3">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.select(<span class="st">&quot;SALARY&quot;</span>,<span class="st">&quot;STATE_NAME&quot;</span>,<span class="st">&quot;NAICS2_NAME&quot;</span>, <span class="st">&quot;EDUCATION_LEVELS_NAME&quot;</span>, <span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>, <span class="st">&quot;DURATION&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.na.fill({<span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>: <span class="dv">0</span>, <span class="st">&quot;DURATION&quot;</span>:<span class="dv">0</span>})</span></code></pre></div>
+</div>
+</section>
+<section id="visualize-the-nas-to-understand-the-magnitude.-over-50-of-salary-is-na-remove-those-values." class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3"><span class="header-section-number">1.1.3</span> Visualize the nas to understand the magnitude. Over 50% of salary is na, remove those values.</h3>
+<div id="cfeed496" class="cell" data-execution_count="4">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_pd <span class="op">=</span> df.toPandas()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>(df_pd.isna().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df_pd)) <span class="op">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 95:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>SALARY                   57.505035
+STATE_NAME                0.060691
+NAICS2_NAME               0.060691
+EDUCATION_LEVELS_NAME     0.060691
+MIN_YEARS_EXPERIENCE      0.000000
+DURATION                  0.000000
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="using-seaborn-review-a-heat-map-of-na-values.-the-independant-variables-are-whole-but-salary-is-missing-data." class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4"><span class="header-section-number">1.1.4</span> Using seaborn review a heat map of NA values. The independant variables are whole but salary is missing data.</h3>
+<div id="c6afa5a5" class="cell" data-execution_count="6">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_pd.isna(), cbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Data Heatmap&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="assignment04-tluck15_files/figure-html/cell-7-output-1.png" width="592" height="598" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="drop-all-records-where-salary-is-na." class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5"><span class="header-section-number">1.1.5</span> Drop all records where salary is NA.</h3>
+<div id="bfab31e8" class="cell" data-execution_count="7">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.na.drop(subset<span class="op">=</span>[<span class="st">&quot;SALARY&quot;</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_pd <span class="op">=</span> df.toPandas()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_pd.isna(), cbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Data Heatmap&quot;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 96:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="assignment04-tluck15_files/figure-html/cell-8-output-2.png" width="592" height="598" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-data-is-cleaned-and-is-ready-for-modeling." class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6"><span class="header-section-number">1.1.6</span> The data is cleaned and is ready for modeling.</h3>
+<div id="58db01c1" class="cell" data-execution_count="8">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(df_pd.isna().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df_pd)) <span class="op">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>SALARY                   0.0
+STATE_NAME               0.0
+NAICS2_NAME              0.0
+EDUCATION_LEVELS_NAME    0.0
+MIN_YEARS_EXPERIENCE     0.0
+DURATION                 0.0
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="feature-engineering" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Feature Engineering</h1>
+<section id="first-take-the-input-variables-and-split-into-numeric-and-non-numeric-goups.-state-name-education-levels-naics_name-are-all-categoric-variables.-min-years-experience-and-duration-are-numeric." class="level2" data-number="2.1">
+<h2 data-number="2.1"><span class="header-section-number">2.1</span> First take the input variables and split into numeric and non numeric goups. State name, education levels, NAICS_NAME are all categoric variables. Min years experience and duration are numeric.</h2>
+<div id="252c6cc2" class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>categorical_cols <span class="op">=</span> [<span class="st">&quot;STATE_NAME&quot;</span>, <span class="st">&quot;EDUCATION_LEVELS_NAME&quot;</span>,<span class="st">&quot;NAICS2_NAME&quot;</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>numeric_cols <span class="op">=</span> [<span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>, <span class="st">&quot;DURATION&quot;</span>]</span></code></pre></div>
+</div>
+<section id="for-the-categorical-columns-assign-index-values-to-each-column-and-then-one-hot-encode-the-columns-as-a-vector." class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1"><span class="header-section-number">2.1.1</span> For the categorical columns, assign index values to each column and then one hot encode the columns as a vector.</h3>
+<div id="aeca0408" class="cell" data-execution_count="11">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>indexers <span class="op">=</span> [StringIndexer(inputCol<span class="op">=</span>col, outputCol<span class="op">=</span><span class="ss">f&quot;</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_indexed&quot;</span>) <span class="cf">for</span> col <span class="kw">in</span> categorical_cols]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>encoders <span class="op">=</span> [OneHotEncoder(inputCols<span class="op">=</span>[<span class="ss">f&quot;</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_indexed&quot;</span>], outputCols<span class="op">=</span>[<span class="ss">f&quot;</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_encoded&quot;</span>]) <span class="cf">for</span> col <span class="kw">in</span> categorical_cols]</span></code></pre></div>
+</div>
+</section>
+<section id="next-compile-the-one-hot-encoded-columns-with-the-numeric-columns-in-a-vector-to-be-used-in-feature-modeling." class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2"><span class="header-section-number">2.1.2</span> Next compile the one hot encoded columns with the numeric columns in a vector to be used in feature modeling.</h3>
+<div id="4777fe82" class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>assembler_inputs <span class="op">=</span> [<span class="ss">f&quot;</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_encoded&quot;</span> <span class="cf">for</span> col <span class="kw">in</span> categorical_cols] <span class="op">+</span> numeric_cols</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>assembler <span class="op">=</span> VectorAssembler(inputCols<span class="op">=</span>assembler_inputs, outputCol<span class="op">=</span><span class="st">&quot;features&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="store-these-data-preparation-steps-as-a-pipeline-for-further-use" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3"><span class="header-section-number">2.1.3</span> Store these data preparation steps as a pipeline for further use</h3>
+<div id="e6b4377f" class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>indexers <span class="op">+</span> encoders <span class="op">+</span> [assembler])</span></code></pre></div>
+</div>
+</section>
+<section id="for-polynomial-square-min-years-experience" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4"><span class="header-section-number">2.1.4</span> For polynomial square min years experience</h3>
+<div id="52c8b2d1" class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col, <span class="bu">pow</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df_poly <span class="op">=</span> df.withColumn(<span class="st">&quot;MIN_YEARS_EXPERIENCE_SQ&quot;</span>, <span class="bu">pow</span>(col(<span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>), <span class="dv">2</span>))</span></code></pre></div>
+</div>
+</section>
+<section id="assemble-vector-using-min-years-and-min-years-experience-for-polynomial-features." class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5"><span class="header-section-number">2.1.5</span> Assemble vector using min years and min years experience for polynomial features.</h3>
+<div id="941ce3ab" class="cell" data-execution_count="15">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>assembler_poly <span class="op">=</span> VectorAssembler(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>, <span class="st">&quot;MIN_YEARS_EXPERIENCE_SQ&quot;</span>],</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">&quot;features_poly&quot;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df_poly <span class="op">=</span> assembler_poly.transform(df_poly)</span></code></pre></div>
+</div>
+<div id="64c825d7" class="cell" data-execution_count="16">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_poly.printSchema()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>root
+ |-- SALARY: integer (nullable = true)
+ |-- STATE_NAME: string (nullable = true)
+ |-- NAICS2_NAME: string (nullable = true)
+ |-- EDUCATION_LEVELS_NAME: string (nullable = true)
+ |-- MIN_YEARS_EXPERIENCE: integer (nullable = false)
+ |-- DURATION: integer (nullable = false)
+ |-- MIN_YEARS_EXPERIENCE_SQ: double (nullable = false)
+ |-- features_poly: vector (nullable = true)
+</code></pre>
+</div>
+</div>
+<div id="44da7798" class="cell" data-execution_count="17">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df_poly.show()</span></span></code></pre></div>
+</div>
+</section>
+<section id="now-split-the-data-for-training-and-testing-in-a-7030-split." class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6"><span class="header-section-number">2.1.6</span> Now split the data for training and testing in a 70/30% split.</h3>
+<div id="c502e470" class="cell" data-execution_count="18">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>train_df, test_df <span class="op">=</span> df.randomSplit([<span class="fl">0.7</span>, <span class="fl">0.3</span>], seed<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="use-the-previusly-created-pipeline-the-prepare-the-training-and-test-data-for-use." class="level3" data-number="2.1.7">
+<h3 data-number="2.1.7"><span class="header-section-number">2.1.7</span> Use the previusly created pipeline the prepare the training and test data for use.</h3>
+<div id="edb91d65" class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pipeline_model <span class="op">=</span> pipeline.fit(train_df)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>train_ready <span class="op">=</span> pipeline_model.transform(train_df)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>test_ready <span class="op">=</span> pipeline_model.transform(test_df)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 97:&gt;                                                         (0 + 1) / 1]                                                                                [Stage 103:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 109:&gt;                                                        (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+</section>
+<section id="parse-target-variable-and-features-vector-for-modeling." class="level3" data-number="2.1.8">
+<h3 data-number="2.1.8"><span class="header-section-number">2.1.8</span> Parse target variable and features vector for modeling.</h3>
+<div id="5b9a784a" class="cell" data-execution_count="20">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>train_ready <span class="op">=</span> train_ready[<span class="st">&quot;SALARY&quot;</span>,<span class="st">&quot;features&quot;</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#train_ready.show()</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>test_ready <span class="op">=</span> test_ready[<span class="st">&quot;SALARY&quot;</span>,<span class="st">&quot;features&quot;</span>]</span></code></pre></div>
+</div>
+</section>
+<section id="confirm-schema-for-linear-regression-model." class="level3" data-number="2.1.9">
+<h3 data-number="2.1.9"><span class="header-section-number">2.1.9</span> Confirm schema for linear regression model.</h3>
+<div id="a74268e8" class="cell" data-execution_count="22">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>train_ready.printSchema()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>root
+ |-- SALARY: integer (nullable = true)
+ |-- features: vector (nullable = true)
+</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="modeling" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Modeling</h1>
+<section id="build-and-fit-model" class="level2" data-number="3.1">
+<h2 data-number="3.1"><span class="header-section-number">3.1</span> Build and fit model</h2>
+<section id="penalalize-large-coefficients-and-keep-all-features.-allow-for-intercept-and-standardize-the-data-accross-variables." class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1"><span class="header-section-number">3.1.1</span> Penalalize large coefficients and keep all features. Allow for intercept and standardize the data accross variables.</h3>
+<div id="9a67031d" class="cell" data-execution_count="23">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lrm <span class="op">=</span> LinearRegression(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  featuresCol<span class="op">=</span><span class="st">&quot;features&quot;</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  maxIter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  regParam<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  elasticNetParam<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  fitIntercept<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  standardization<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>modelLR <span class="op">=</span> lrm.fit(train_ready)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 115:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 116:&gt;                                                        (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="linear-regression-model-summary-on-train-and-test-data" class="level2" data-number="3.2">
+<h2 data-number="3.2"><span class="header-section-number">3.2</span> Linear Regression Model Summary on Train and test data</h2>
+<div id="47f9064e" class="cell" data-execution_count="24">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> modelLR.summary</span></code></pre></div>
+</div>
+<section id="issue-existed-with-spillover-so-control-with-se-tvals-pvals.-for-features-loop-through-for-only-the-number-of-coefficients-so-to-avoid-spillover." class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1"><span class="header-section-number">3.2.1</span> Issue existed with spillover so control with se, tvals, pvals. For features, loop through for only the number of coefficients so to avoid spillover.</h3>
+</section>
+<section id="linear-regression-model-performed-well.-all-features-had-statistically-significant-p-values-moderately-large-t-values-reasonably-equivalent-coefficient-magnitudes-with-respect-to-salary-which-is-reflected-in-the-stndard-error-being-significantly-smaller-than-the-respective-coefficient." class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2"><span class="header-section-number">3.2.2</span> Linear regression model performed well. All features had statistically significant p values, moderately large t values, reasonably equivalent coefficient magnitudes with respect to salary, which is reflected in the stndard error being significantly smaller than the respective coefficient.</h3>
+<div id="4f8dd8cf" class="cell" data-execution_count="25">
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>se <span class="op">=</span> summary.coefficientStandardErrors[<span class="dv">1</span>:]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>tvals <span class="op">=</span> summary.tValues[<span class="dv">1</span>:]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>pvals <span class="op">=</span> summary.pValues[<span class="dv">1</span>:]</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Feature&quot;</span>: [<span class="ss">f&quot;feature_</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(modelLR.coefficients))],</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Coefficient&quot;</span>: modelLR.coefficients.toArray(),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;StdError&quot;</span>: se,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tValue&quot;</span>: tvals,</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;pValue&quot;</span>: pvals</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>coef_df.head(<span class="dv">100</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Feature</th>
+<th data-quarto-table-cell-role="th">Coefficient</th>
+<th data-quarto-table-cell-role="th">StdError</th>
+<th data-quarto-table-cell-role="th">tValue</th>
+<th data-quarto-table-cell-role="th">pValue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>feature_1</td>
+<td>27160.771987</td>
+<td>5586.524673</td>
+<td>3.197485</td>
+<td>1.388322e-03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>feature_2</td>
+<td>17862.826140</td>
+<td>5604.708248</td>
+<td>3.970201</td>
+<td>7.204534e-05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>feature_3</td>
+<td>22251.815915</td>
+<td>5628.321573</td>
+<td>2.900919</td>
+<td>3.724464e-03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>feature_4</td>
+<td>16327.306545</td>
+<td>5639.799141</td>
+<td>3.565083</td>
+<td>3.645294e-04</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>feature_5</td>
+<td>20106.349447</td>
+<td>5650.125035</td>
+<td>3.825928</td>
+<td>1.306483e-04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">93</td>
+<td>feature_94</td>
+<td>-13950.827368</td>
+<td>9974.182772</td>
+<td>-0.376460</td>
+<td>7.065783e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">94</td>
+<td>feature_95</td>
+<td>-3754.885150</td>
+<td>10060.013381</td>
+<td>0.278668</td>
+<td>7.805023e-01</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>feature_96</td>
+<td>2803.403880</td>
+<td>73.807420</td>
+<td>74.588198</td>
+<td>0.000000e+00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>feature_97</td>
+<td>5505.162463</td>
+<td>15.692949</td>
+<td>-6.188578</td>
+<td>6.180532e-10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>feature_98</td>
+<td>-97.117036</td>
+<td>36792.595281</td>
+<td>0.164635</td>
+<td>8.692328e-01</td>
+</tr>
+</tbody>
+</table>
+
+<p>98 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="now-validate-and-run-the-model-using-the-test-data" class="level2" data-number="3.3">
+<h2 data-number="3.3"><span class="header-section-number">3.3</span> Now validate and run the model using the test data</h2>
+<div id="0f0a2189" class="cell" data-execution_count="26">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>testmodelLR <span class="op">=</span> lrm.fit(test_ready)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 117:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 118:&gt;                                                        (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+<div id="c28d99de" class="cell" data-execution_count="27">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>testsummary <span class="op">=</span> testmodelLR.summary</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>t_values <span class="op">=</span> summary.tValues</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>p_values <span class="op">=</span> summary.pValues</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>stats_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;t_value&quot;</span>: t_values,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;p_value&quot;</span>: p_values</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>desc_stats <span class="op">=</span> stats_df.describe()</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(desc_stats)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         t_value    p_value
+count  99.000000  99.000000
+mean    2.496936   0.176394
+std     7.503150   0.265126
+min    -6.188578   0.000000
+25%     0.898590   0.003787
+50%     2.039629   0.036848
+75%     2.887619   0.279912
+max    74.588198   0.981592</code></pre>
+</div>
+</div>
+<section id="issue-existed-with-spillover-so-control-with-se-tvals-pvals.-for-features-loop-through-for-only-the-number-of-coefficients-so-to-avoid-spillover.-1" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1"><span class="header-section-number">3.3.1</span> Issue existed with spillover so control with se, tvals, pvals. For features, loop through for only the number of coefficients so to avoid spillover.</h3>
+</section>
+<section id="the-linear-regression-model-performed-okay-on-the-test-data.-accross-the-99-features-the-average-p-value-was-not-significant-however-the-median-value-was-significant-at-appx.-.037---the-75th-percentile-is-not-significant-but-the-25th-is.-there-were-a-few-features-that-produced-extreme-results-in-all-of-the-t-value--674-p-value-0.98-and-coefficient-a-few-spikes.-r-squared-states-35-of-variation-in-salary-can-be-explained-by-the-features-in-the-data.-on-average-predictions-are-off-by-35834." class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2"><span class="header-section-number">3.3.2</span> The linear regression model performed okay on the test data. Accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. THere were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). R squared states ~35% of variation in salary can be explained by the features in the data. On average predictions are off by ~$35,834.</h3>
+<div id="430b110f" class="cell" data-execution_count="28">
+<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>se <span class="op">=</span> testsummary.coefficientStandardErrors[<span class="dv">1</span>:]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>tvals <span class="op">=</span> testsummary.tValues[<span class="dv">1</span>:]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>pvals <span class="op">=</span> testsummary.pValues[<span class="dv">1</span>:]</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>testcoef_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Feature&quot;</span>: [<span class="ss">f&quot;feature_</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(testmodelLR.coefficients))],</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Coefficient&quot;</span>: testmodelLR.coefficients.toArray(),</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;StdError&quot;</span>: se,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tValue&quot;</span>: tvals,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;pValue&quot;</span>: pvals</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;R2:&quot;</span>, testsummary.r2)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RMSE:&quot;</span>, testsummary.rootMeanSquaredError)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co">#coef_df.head(100)</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale coefficients to t-values range</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>testcoef_df[<span class="st">&quot;Coefficient_log&quot;</span>] <span class="op">=</span> np.log(np.<span class="bu">abs</span>(testcoef_df[<span class="st">&quot;Coefficient&quot;</span>]) <span class="op">+</span> <span class="fl">1e-8</span>) </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis = features</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> testcoef_df[<span class="st">&quot;Feature&quot;</span>]</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="co"># plot each statistic as a line</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, testcoef_df[<span class="st">&quot;Coefficient_log&quot;</span>], marker<span class="op">=</span><span class="st">&#39;o&#39;</span>, label<span class="op">=</span><span class="st">&quot;Coefficient Scaled&quot;</span>)</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>plt.plot(x, testcoef_df[<span class="st">&quot;tValue&quot;</span>], marker<span class="op">=</span><span class="st">&#39;s&#39;</span>, label<span class="op">=</span><span class="st">&quot;t-value&quot;</span>)</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>plt.plot(x, testcoef_df[<span class="st">&quot;pValue&quot;</span>], marker<span class="op">=</span><span class="st">&#39;^&#39;</span>, label<span class="op">=</span><span class="st">&quot;p-value&quot;</span>)</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, linestyle<span class="op">=</span><span class="st">&#39;:&#39;</span>, label<span class="op">=</span><span class="st">&#39;t-value threshold&#39;</span>)</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">&#39;right&#39;</span>)  <span class="co"># rotate feature names for readability</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Features&quot;</span>)</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Values&quot;</span>)</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Model Summary: Coefficients, t-values, p-values&quot;</span>)</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R2: 0.35636023407578243
+RMSE: 35834.08039301742</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="assignment04-tluck15_files/figure-html/cell-29-output-2.png" width="1142" height="566" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="polynomial-regression" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Polynomial Regression</h1>
+<div id="09cfb80f" class="cell" data-execution_count="29">
+<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> PolynomialExpansion, VectorAssembler</span></code></pre></div>
+</div>
+<section id="combine-numeric-and-non-numeric-columns." class="level2" data-number="4.1">
+<h2 data-number="4.1"><span class="header-section-number">4.1</span> Combine numeric and non numeric columns.</h2>
+<div id="35d48757" class="cell" data-execution_count="30">
+<div class="sourceCode" id="cb38"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>assembler_poly <span class="op">=</span> VectorAssembler(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">&quot;MIN_YEARS_EXPERIENCE&quot;</span>, <span class="st">&quot;DURATION&quot;</span>],</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">&quot;numeric_features&quot;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">#expand to polynomial</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>poly_expansion <span class="op">=</span> PolynomialExpansion(</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    degree<span class="op">=</span><span class="dv">2</span>, </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    inputCol<span class="op">=</span><span class="st">&quot;numeric_features&quot;</span>, </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">&quot;poly_features&quot;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<section id="use-the-pipeline-created-earlier-to-prepare-the-polynomial-features." class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1"><span class="header-section-number">4.1.1</span> Use the pipeline created earlier to prepare the polynomial features.</h3>
+<div id="f6a1db43" class="cell" data-execution_count="31">
+<div class="sourceCode" id="cb39"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>assembler_final <span class="op">=</span> VectorAssembler(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">&quot;poly_features&quot;</span>] <span class="op">+</span> [<span class="ss">f&quot;</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_encoded&quot;</span> <span class="cf">for</span> col <span class="kw">in</span> categorical_cols],</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">&quot;features&quot;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>poly_pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>indexers <span class="op">+</span> encoders <span class="op">+</span> [assembler_poly, poly_expansion, assembler_final])</span></code></pre></div>
+</div>
+</section>
+<section id="fit-model-and-apply-same-parameters-as-the-linear-regression.-36.8-of-variation-in-salary-can-be-explained-by-the-feature-variables.-and-on-average-the-prediction-was-off-by-36025." class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2"><span class="header-section-number">4.1.2</span> Fit model and apply same parameters as the linear regression. ~36.8% of variation in salary can be explained by the feature variables. And on average the prediction was off by $36,025.</h3>
+<div id="b224f20c" class="cell" data-execution_count="32">
+<div class="sourceCode" id="cb40"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>poly_model <span class="op">=</span> poly_pipeline.fit(train_df)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>train_poly <span class="op">=</span> poly_model.transform(train_df)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>test_poly <span class="op">=</span> poly_model.transform(test_df)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>lrm_poly <span class="op">=</span> LinearRegression(</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    featuresCol<span class="op">=</span><span class="st">&quot;features&quot;</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    maxIter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    regParam<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    elasticNetParam<span class="op">=</span><span class="fl">0.0</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>model_poly <span class="op">=</span> lrm_poly.fit(train_poly)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>summary_poly <span class="op">=</span> model_poly.summary</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;R2:&quot;</span>, summary_poly.r2)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RMSE:&quot;</span>, summary_poly.rootMeanSquaredError)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 119:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 125:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 131:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 137:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 138:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 139:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 140:&gt;                                                        (0 + 1) / 1]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R2: 0.36831696100365496
+RMSE: 36025.51327867095</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                                                                                </code></pre>
+</div>
+</div>
+<div id="3e86ccdd" class="cell" data-execution_count="33">
+<div class="sourceCode" id="cb44"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>se <span class="op">=</span> summary_poly.coefficientStandardErrors[<span class="dv">1</span>:]</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>tvals <span class="op">=</span> summary_poly.tValues[<span class="dv">1</span>:]</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>pvals <span class="op">=</span> summary_poly.pValues[<span class="dv">1</span>:]</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Feature&quot;</span>: [<span class="ss">f&quot;feature_</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(model_poly.coefficients))],</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Coefficient&quot;</span>: model_poly.coefficients.toArray(),</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;StdError&quot;</span>: se,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tValue&quot;</span>: tvals,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;pValue&quot;</span>: pvals</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>coef_df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Feature</th>
+<th data-quarto-table-cell-role="th">Coefficient</th>
+<th data-quarto-table-cell-role="th">StdError</th>
+<th data-quarto-table-cell-role="th">tValue</th>
+<th data-quarto-table-cell-role="th">pValue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>feature_1</td>
+<td>4534.036373</td>
+<td>16.938884</td>
+<td>5.113944</td>
+<td>3.182049e-07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>feature_2</td>
+<td>86.624507</td>
+<td>49.042361</td>
+<td>-8.224292</td>
+<td>2.220446e-16</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>feature_3</td>
+<td>-403.338710</td>
+<td>4.098090</td>
+<td>0.271263</td>
+<td>7.861914e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>feature_4</td>
+<td>1.111660</td>
+<td>0.982271</td>
+<td>6.941764</td>
+<td>3.982370e-12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>feature_5</td>
+<td>6.818695</td>
+<td>5553.886969</td>
+<td>4.923227</td>
+<td>8.575835e-07</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="overall-the-polynomial-model-performed-worse-than-the-linear-regression-model.-all-of-the-p-value-t-value-and-coefficients-experience-high-volatilitity-and-varying-results." class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3"><span class="header-section-number">4.1.3</span> Overall the polynomial model performed worse than the linear regression model. All of the p value, t value, and coefficients experience high volatilitity and varying results.</h3>
+<div id="4939a8b9" class="cell" data-execution_count="34">
+<div class="sourceCode" id="cb45"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale coefficients with log</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>coef_df[<span class="st">&quot;Coefficient_log&quot;</span>] <span class="op">=</span> np.log(np.<span class="bu">abs</span>(coef_df[<span class="st">&quot;Coefficient&quot;</span>]) <span class="op">+</span> <span class="fl">1e-8</span>) </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis = features</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> coef_df[<span class="st">&quot;Feature&quot;</span>]</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot each statistic as a line</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, coef_df[<span class="st">&quot;Coefficient_log&quot;</span>], marker<span class="op">=</span><span class="st">&#39;o&#39;</span>, label<span class="op">=</span><span class="st">&quot;Coefficient Scaled&quot;</span>)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x, coef_df[<span class="st">&quot;tValue&quot;</span>], marker<span class="op">=</span><span class="st">&#39;s&#39;</span>, label<span class="op">=</span><span class="st">&quot;t-value&quot;</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, coef_df[<span class="st">&quot;pValue&quot;</span>], marker<span class="op">=</span><span class="st">&#39;^&#39;</span>, label<span class="op">=</span><span class="st">&quot;p-value&quot;</span>)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, linestyle<span class="op">=</span><span class="st">&#39;:&#39;</span>, label<span class="op">=</span><span class="st">&#39;t-value threshold&#39;</span>)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">&#39;right&#39;</span>)  <span class="co"># rotate feature names for readability</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Features&quot;</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Values&quot;</span>)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Model Summary: Coefficients, t-values, p-values&quot;</span>)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="assignment04-tluck15_files/figure-html/cell-35-output-1.png" width="1142" height="566" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="random-forest" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Random Forest</h1>
+<section id="setup-model" class="level2" data-number="5.1">
+<h2 data-number="5.1"><span class="header-section-number">5.1</span> Setup model</h2>
+<section id="trees-10-levels-of-depth-to-each-branch-max-of-18-bins-for-feature-categorization." class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1"><span class="header-section-number">5.1.1</span> 100 trees, 10 levels of depth to each branch, max of 18 bins for feature categorization.</h3>
+<div id="e1893fc2" class="cell" data-execution_count="35">
+<div class="sourceCode" id="cb46"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.regression <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestRegressor(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    featuresCol<span class="op">=</span><span class="st">&quot;features&quot;</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    numTrees<span class="op">=</span><span class="dv">100</span>,         </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    maxDepth<span class="op">=</span><span class="dv">10</span>,         </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    maxBins<span class="op">=</span><span class="dv">18</span>,        </span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+</section>
+<section id="like-the-other-models-assemble-the-data-and-prepare-it-using-the-pipeline-setup-earlier-in-the-project." class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2"><span class="header-section-number">5.1.2</span> Like the other models, assemble the data and prepare it using the pipeline setup earlier in the project.</h3>
+<div id="a03ba519" class="cell" data-execution_count="36">
+<div class="sourceCode" id="cb47"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>rf_pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>indexers <span class="op">+</span> encoders <span class="op">+</span> [assembler, rf])</span></code></pre></div>
+</div>
+</section>
+<section id="train-and-then-make-predictions-on-test-data." class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3"><span class="header-section-number">5.1.3</span> Train and then make predictions on test data.</h3>
+<div id="a1963f0e" class="cell" data-execution_count="37">
+<div class="sourceCode" id="cb48"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> rf_pipeline.fit(train_df)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> rf_model.transform(test_df)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 141:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 147:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 153:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 159:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 160:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 161:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 163:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 165:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 167:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 169:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 171:&gt;                                                        (0 + 1) / 1]                                                                                25/10/17 14:53:12 WARN DAGScheduler: Broadcasting large task binary with size 1319.1 KiB
+[Stage 173:&gt;                                                        (0 + 1) / 1]                                                                                25/10/17 14:53:15 WARN DAGScheduler: Broadcasting large task binary with size 2.1 MiB
+[Stage 175:&gt;                                                        (0 + 1) / 1]                                                                                25/10/17 14:53:18 WARN DAGScheduler: Broadcasting large task binary with size 3.4 MiB
+[Stage 177:&gt;                                                        (0 + 1) / 1]                                                                                25/10/17 14:53:21 WARN DAGScheduler: Broadcasting large task binary with size 5.1 MiB
+[Stage 179:&gt;                                                        (0 + 1) / 1][Stage 180:&gt;                                                        (0 + 1) / 1]                                                                                25/10/17 14:53:26 WARN DAGScheduler: Broadcasting large task binary with size 7.4 MiB
+[Stage 181:&gt;                                                        (0 + 1) / 1][Stage 182:&gt;                                                        (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+</section>
+<section id="initial-results-suggest-the-random-forest-performed-reasonably-well.-the-r-squared-suggests-43-of-variation-in-salary-can-be-explained-by-the-features-in-the-forest.-error-is-comparable-to-the-other-models-as-on-average-the-prediction-of-salary-was-25175-off." class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4"><span class="header-section-number">5.1.4</span> Initial results suggest the random forest performed reasonably well. The r squared suggests ~43% of variation in salary can be explained by the features in the forest. Error is comparable to the other models as on average the prediction of salary was $25,175 off.</h3>
+<div id="569732b4" class="cell" data-execution_count="38">
+<div class="sourceCode" id="cb50"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>evaluator <span class="op">=</span> RegressionEvaluator(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    metricName<span class="op">=</span><span class="st">&quot;r2&quot;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> evaluator.evaluate(predictions)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> RegressionEvaluator(</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>, predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>, metricName<span class="op">=</span><span class="st">&quot;rmse&quot;</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>).evaluate(predictions)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> RegressionEvaluator(</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    labelCol<span class="op">=</span><span class="st">&quot;SALARY&quot;</span>, predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>, metricName<span class="op">=</span><span class="st">&quot;mae&quot;</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>).evaluate(predictions)</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;R²: </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;RMSE: </span><span class="sc">{</span>rmse<span class="sc">:.3f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;MAE: </span><span class="sc">{</span>mae<span class="sc">:.3f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 183:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 184:&gt;                                                        (0 + 1) / 1]                                                                                [Stage 185:&gt;                                                        (0 + 1) / 1]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R²: 0.429
+RMSE: 33744.372
+MAE: 25175.654</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                                                                                </code></pre>
+</div>
+</div>
+</section>
+<section id="feature-97-was-by-far-the-most-important-feature." class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5"><span class="header-section-number">5.1.5</span> Feature 97 was by far the most important feature.</h3>
+<div id="6219e4bb" class="cell" data-execution_count="39">
+<div class="sourceCode" id="cb54"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>rf_stage <span class="op">=</span> rf_model.stages[<span class="op">-</span><span class="dv">1</span>] </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf_stage.featureImportances.toArray()</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>feat_imp <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Feature&quot;</span>: [<span class="ss">f&quot;feature_</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(importances))],</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Importance&quot;</span>: importances</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>}).sort_values(by<span class="op">=</span><span class="st">&quot;Importance&quot;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>feat_imp.head(<span class="dv">10</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Feature</th>
+<th data-quarto-table-cell-role="th">Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">96</td>
+<td>feature_97</td>
+<td>0.521858</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">54</td>
+<td>feature_55</td>
+<td>0.083882</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">76</td>
+<td>feature_77</td>
+<td>0.069038</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">80</td>
+<td>feature_81</td>
+<td>0.045592</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>feature_98</td>
+<td>0.031267</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">55</td>
+<td>feature_56</td>
+<td>0.029943</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">83</td>
+<td>feature_84</td>
+<td>0.025972</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">52</td>
+<td>feature_53</td>
+<td>0.016110</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">77</td>
+<td>feature_78</td>
+<td>0.013780</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">51</td>
+<td>feature_52</td>
+<td>0.013470</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="25ae2cb1" class="cell" data-execution_count="40">
+<div class="sourceCode" id="cb55"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>feat_imp.head(<span class="dv">15</span>), y<span class="op">=</span><span class="st">&quot;Feature&quot;</span>, x<span class="op">=</span><span class="st">&quot;Importance&quot;</span>, palette<span class="op">=</span><span class="st">&quot;viridis&quot;</span>)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Top 15 Random Forest Feature Importances&quot;</span>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_5663/3261347940.py:5: FutureWarning:
+
+
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="assignment04-tluck15_files/figure-html/cell-41-output-2.png" width="949" height="566" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="model-comparisons" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Model Comparisons</h1>
+<section id="summary" class="level2" data-number="6.1">
+<h2 data-number="6.1"><span class="header-section-number">6.1</span> Summary</h2>
+<section id="overall-the-linear-regression-model-was-the-model-that-produced-the-most-consistent-results-on-the-test-data.-generally-speaking-across-all-features-the-t-stat-was-consistently-high-coefferror-the-p-value-was-consistently-at-a-level-of-significance-.05-and-this-was-representative-of-all-variables-meaning-all-of-the-variables-seemed-to-contribute-reasonably-to-the-outcome-in-terms-of-the-coefficient-magnitude-the-t-stat-and-the-p-value.-the-random-foorest-performed-better-in-r-squared-percent-variation-in-salary-explained-by-the-features-but-the-rest-of-the-supporting-data-was-inconsinstent-especially-the-expnential-impact-of-feature-97-on-the-random-forest.-the-polynomial-model-also-had-inconsistencies-which-make-it-less-consistenly-effective-than-the-linear-regression." class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1"><span class="header-section-number">6.1.1</span> Overall the linear regression model was the model that produced the most consistent results on the test data. Generally speaking across all features the T-stat was consistently high (coeff/error), the p[ value was consistently at a level of significance (&lt;.05), and this was representative of all variables, meaning all of the variables seemed to contribute reasonably to the outcome in terms of the coefficient magnitude, the t-stat and the p-value. The random foorest performed better in r squared (percent variation in salary explained by the features) but the rest of the supporting data was inconsinstent, especially the expnential impact of feature 97 on the random forest. The polynomial model also had inconsistencies, which make it less consistenly effective than the linear regression.</h3>
+</section>
+<section id="in-total-the-linear-regression-accross-the-99-features-the-average-p-value-was-not-significant-however-the-median-value-was-significant-at-appx.-.037---the-75th-percentile-is-not-significant-but-the-25th-is.-there-were-a-few-features-that-produced-extreme-results-in-all-of-the-t-value--674-p-value-0.98-and-coefficient-a-few-spikes.-r-squared-states-35-of-variation-in-salary-can-be-explained-by-the-features-in-the-data.-on-average-predictions-are-off-by-35834." class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2"><span class="header-section-number">6.1.2</span> In total the linear regression accross the 99 features, the average p value was not significant, however the median value was significant at appx. .037 - the 75th percentile is not significant but the 25th is. There were a few features that produced extreme results in all of the t value (~-6/74), p value (0/.98), and coefficient (a few spikes). R squared states ~35% of variation in salary can be explained by the features in the data. On average predictions are off by ~$35,834.</h3>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Assignment 04</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Assignment 04</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Assignment 04</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Assignment 04</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Assignment 04</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+</body>
+
+</html>
